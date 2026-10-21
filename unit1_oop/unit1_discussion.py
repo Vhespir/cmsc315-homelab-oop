@@ -171,14 +171,14 @@ def main():
 
     # Edge cases. Bad configs get rejected and reported instead of crashing the program.
     try:
-        bad = Service("broken", "nexus", 99999)
+        Service("broken", "nexus", 99999)
     except ValueError as e:
         print(f"Config rejected:", e)
 
     try:
-        bad = Service("broken", "nexus", "46620")
+        Service("broken", "nexus", "46620")
     except ValueError as e:
-        print(f"Config rejected:", e)
+        print("Config rejected:", e)
 
     print("\n--- Child class test ---")
     immich = ContainerService("Immich", "nexus", 2283,
