@@ -33,3 +33,9 @@ Your reflection should be approximately 150–200 words and address the followin
 2. What challenges did you encounter, and how did you overcome them?
 3. Compare OOP to procedural programming.
 4. Discuss the benefits of maintainability and reusability and apply this managing overhead, practical application development, and future use.
+
+## My Implementation
+
+I modeled the real services on my homelab server (nexus). `Service` was the parent class, and it validated ports through `set_port`. `ContainerService` inherited from it and added a Docker image and a list of volumes. In the copy demo, the shallow copy shared the original's volume list and the deep copy did not.
+
+For my extension, I made `add_volume` reject a volume that was already mounted, since Docker won't start a container with a duplicate mount. I tested an out-of-range port (99999), a port passed as text ("46620"), and a duplicate volume, and all three were rejected with an error instead of crashing the program.

@@ -71,7 +71,10 @@ class ContainerService(Service):
         self.volumes = volumes
 
     # Adds a mount to this container's volume list.
+    # Extension: rejects duplicates, since Docker won't start a container with the same mount twice.
     def add_volume(self, volume):
+        if volume in self.volumes:
+            raise ValueError(f"Volume already mounted: {volume}")
         self.volumes.append(volume)
 
     # Overrides Service.__str__. Reuses the parent's text and adds the image and volumes.
@@ -188,6 +191,11 @@ def main():
     immich.add_volume("/data/media/nextcloud/data/Vhespir/files/Pictures:/external/pictures")
 
     print(immich)
+    # Extension test: adding the same volume again gets rejected instead of duplicated.
+    try:
+        immich.add_volume("/data/media/immich/library:/data")
+    except ValueError as e:
+        print("Config rejected:", e)
 
     demonstrate_namespaces()
     demonstrate_copying()
