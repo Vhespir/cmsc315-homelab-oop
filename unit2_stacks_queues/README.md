@@ -34,3 +34,12 @@ Your reflection should be approximately 150–200 words and address the followin
 1. What concepts or skills did you learn while completing this assignment?
 2. What challenges did you encounter, and how did you overcome them?
 3. Explain the differences between stacks and queues as this relates to real-world applications.
+
+## Implementation
+
+- I implemented a Stack using a Python list, with the end of the list as the top. push() and pop() both run in O(1).
+- I implemented a Queue using collections.deque, because popleft() removes from the front in O(1). A list would be O(n).
+- I handled empty-structure edge cases by returning None from pop(), peek(), dequeue(), and front() instead of letting the program crash.
+- I tested single-item structures to confirm they were empty after one removal.
+- I modeled a restaurant kitchen: orders waited in a queue (FIFO), and the expo screen's undo history used a stack (LIFO).
+- Memory grew linearly, O(n): each added item used one more slot, and removing an item freed it.
