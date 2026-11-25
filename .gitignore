@@ -3,3 +3,11 @@ __pycache__/
 .DS_Store
 .vscode/
 .idea/
+
+# Java build output and local libraries
+*.class
+lib/
+
+# Essays and documents (graded work, not for a public repo)
+*.docx
+*.odt
